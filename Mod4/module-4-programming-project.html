@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CMPS 162: Module 4 Programming Project</title>
+<style>* { font-family: monospace; }</style>
+<script>
+
+//-----------//
+// Functions //
+//-----------//
+console.log("Functions");
+
+// 1. Write a function named 'greet' that greets the user. Make sure that you
+//    call it as well.
+
+function greet(){
+  alert("Hello, user!");
+}
+greet();
+
+// 2. Write a function named 'sumAndPrint' that takes two numbers as parameters,
+//    adds them together, and prints the result to the console.
+
+function sumAndPrint(x, y) {
+  console.log(x + y);
+}
+sumAndPrint(4, 5);
+
+// 3. Write a function named 'sum' that takes two numbers as parameters,
+//    adds them together, and returns the result.
+
+function sum(x, y) {
+  return x + y;
+}
+console.log("sum(4, 5) returned: " + sum(4, 5));
+
+// 4. Write a function named 'findSmallest' that finds the smallest number in
+//    an array. For example, the answer for [23, 54, 3, 6, 4, 46] should be the
+//    number 3. Note that the function should take an array as input data.
+
+function findSmallest(arry) {
+  var smallest = arry[0];
+  for (var i = 1; i < arry.length; i++) {
+    if(smallest > arry[i]){
+      smallest = arry[i];
+    }
+  }
+  return smallest;
+}
+var testArry = [23, 54, 3, 6, 4, 46];
+console.log("Find smallest: " + findSmallest(testArry));
+
+// 5. Define and implement a function named 'everySecondElement' that takes as
+//    input an array and returns every second element in a new array. For
+//    example, everySecondElement([1, 2, 3, 4, 5, 6]) should return [2, 4, 6].
+//    Hint: one solution uses the % operator.
+
+function everySecondElement(arry) {
+  var returnArry = [];
+  var counter = 0;
+  for(var i = 1; i < arry.length; i = i + 2){
+    returnArry[counter] = arry[i];
+    counter++;
+  }
+  return returnArry;
+}
+var testArry = [1, 2, 3, 4, 5, 6, 7];
+var newArry = everySecondElement(testArry);
+console.log("everySecondElement array: " + newArry);
+
+//--------//
+// Switch //
+//--------//
+console.log("Switch");
+
+// 1. Create a date object and get the month as a number. Use a switch statement
+//    to convert it to text, e.g., 0 becomes January.
+var today = new Date();
+var month = today.getMonth();
+switch(month) {
+  case 0 :
+    month = "January";
+    break;
+  case 1 :
+    month = "February";
+    break;
+  case 2 :
+    month = "March";
+    break;
+  case 3 :
+    month = "April";
+    break;
+  case 4 :
+    month = "May";
+    break;
+  case 5 :
+    month = "June";
+    break;
+  case 6 :
+    month = "July";
+    break;
+  case 7 :
+    month = "August";
+    break;
+  case 8 :
+    month = "September";
+    break;
+  case 9 :
+    month = "October";
+    break;
+  case 10 :
+    month = "November";
+    break;
+  case 11 :
+    month = "December";
+    break;
+}
+console.log("The current month is " + month + ".");
+
+//-------//
+// While //
+//-------//
+console.log("While");
+
+// 1. Create a factorial_while function that uses a while loop but otherwise
+//    returns the same results as the following function.
+
+function factorial_for(n) {
+  var total = 1;
+  for (var i = 1; i <= n; i++) {
+    total *= i;
+  }
+  return total;
+}
+console.log("For: " + factorial_for(5));
+function factorial_while(n) {
+  var i = 1;
+  var total = 1;
+  while (i <= n) {
+    total *= i;
+    i++;
+  }
+  return total;
+}
+console.log("While: " + factorial_while(5));
+
+//----------//
+// Do-While //
+//----------//
+console.log("Do-While");
+
+// 1. Do the same for a factorial_do_while function.
+
+function factorial_do_while(n) {
+  var i = 1;
+  var total = 1;
+  do {
+    total *= i;
+    i++;
+  } while (i <= n);
+  return total;
+}
+
+console.log("Do-While: " + factorial_while(5));
+
+</script>
+</head>
+<body>
+  See console!
+</body>
+</html>
