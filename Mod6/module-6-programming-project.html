@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CMPS 162: Module 6 Programming Project</title>
+<style>* { font-family: monospace; }</style>
+<script>
+
+//---------------------------//
+// The Document Object Model //
+//---------------------------//
+console.log("The Document Object Model");
+
+// 1. Complete the Fahrenheit to Celsius converter below. The following tasks
+//    remain: (1) on the blur event in the Fahrenheit input field call the
+//    fahrenheitToCelsius function, (2) on the blur event in the Celsius input
+//    field call the celsiusToFahrenheit function, (3) implement the
+//    fahrenheitToCelsius function that reads from the Fahrenheit input field,
+//    performs the conversion, and writes to the Celsius field, and
+//    (4) implement the celsiusToFahrenheit function that reads from the Celsius
+//    input field, performs the conversion, and writes to the Fahrenheit field.
+//    The conversion formulas are here: https://en.wikipedia.org/wiki/Fahrenheit
+//    An example is that 80 degrees Fahrenheit should be 26.7 degrees Celsius
+//    (and vice versa).
+
+function fahrenheitToCelsius() {
+  var fTemp = document.getElementById("fahrenheit").value;
+  console.log(fTemp);
+  var cTemp = (fTemp - 32) * (5 / 9);
+  console.log(cTemp);
+  document.getElementById("celsius").value = cTemp;
+}
+
+function celsiusToFahrenheit() {
+  var cTemp = document.getElementById("celsius").value;
+  var fTemp = (cTemp * (9 / 5)) + 32;
+  document.getElementById("fahrenheit").value = fTemp;
+}
+
+// 2. Write a function to use a button that is the action event
+//    When the user selects the button it sets a timer to use the alert function in javascript
+//    It calls a function that sums 2 numbers up and divides by another number
+//    The output will read Welcome to the world of Oz and your number is __<-- The number that sums and divides
+
+function randNumGen() {
+  return ((Math.random() + Math.random()) / Math.random()).toFixed(1);
+}
+
+function buttonAlert() {
+  var num = randNumGen();
+  alert("Welcome to the world of Oz, and your number is " + num + "!");
+}
+
+// 3. Write a function to provide the following
+//    the current browser and operation system that you are using and if cookies is Enabled
+function userInfo() {
+  console.log("Your browser is " + navigator.appName + ".");
+  console.log("Your operating system is " + navigator.platform + ".");
+  if(navigator.cookieEnabled){
+    console.log("Cookies are on.");
+  }
+  else {
+    console.log("Cookies are off.")
+  }
+}
+
+
+</script>
+</head>
+<body>
+  See console!<br><br>
+  <input type="text" id="fahrenheit" onBlur="fahrenheitToCelsius();"> - enter fahrenheit<br>
+  or<br>
+  <input type="text" id="celsius" onBlur="celsiusToFahrenheit();"> - enter celsius<br>
+  <input type="button" value="Mystery Button" id="button1" onClick="setTimeout(buttonAlert, 3000);"><br>
+  <input type="button" value="Check Console" id="button2" onClick="userInfo();">
+</body>
+</html>
