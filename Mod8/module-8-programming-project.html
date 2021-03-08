@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CMPS 162: Module 8 Programming Project</title>
+<style>* { font-family: monospace; }</style>
+<script>
+
+//-----------------//
+// Form Validation //
+//-----------------//
+console.log("Form Validation");
+
+// 1. Implement the validateSSN function that should get the SSN from the SSN
+//    input field and then checks the format. The results should be reported to
+//    the user in the status div. You should make sure the SSN is of the
+//    format 123-45-6789, which means you have to do 3 checks: (1) make sure
+//    the length is 11, (2) make sure the dashes are in the 4th and 7th
+//    position, and (3) all the other characters are numbers.
+
+function validateSSN() {
+  var ssn = document.getElementById("SSNField").value;
+  var correctFormat = true;
+  for (var i = 0; i < ssn.length; i++) {
+    if (isNaN(ssn.charAt(i)) && i !== 3 && i !== 6) {
+      correctFormat = false;
+    }
+  }
+  if (ssn.charAt(3) !== "-") {
+    correctFormat = false;
+  }
+  if (ssn.charAt(6) !== "-") {
+    correctFormat = false;
+  }
+  if (ssn.length !== 11) {
+    correctFormat = false;
+  }
+  if (!correctFormat) {
+    alert("Please use the correct format. XXX-XX-XXXX, where X is a number 0-9.");
+  }
+}
+
+
+
+//------------//
+// Exceptions //
+//------------//
+console.log("Exceptions");
+
+// 1. How would you modify your code above to use exceptions to handle
+//    incorrect SSNs? Include code snippets in your answer (so it has to be
+//    more than just words).
+
+/* All of the code contained within the validateSSN function would need to be
+   enclosed in try {} and followed by:
+   catch(err) {
+     alert(err);
+   }
+   The boolean correctFormat would no longer be needed.
+   Rather than using a boolean to track an incorrect input, you would immediately
+   throw the error when the problem is found.
+   For example, instead of:
+   if (ssn.length !== 11) {
+     correctFormat = false;
+   }
+   I would use:
+   if (ssn.length !== 11) {
+     throw incorrectFormat;
+   }
+   A variable with a prewritten error message, such as:
+   var incorrectFormat = "Please use the correct format. XXX-XX-XXXX, where X is a number 0-9.";
+   would be placed at the top of the code enclosed by try so you do not have to
+   rewrite your error message each time, unless you'd prefer a unique error
+   message for each possible mistake. */
+
+//----------------//
+// More On Events //
+//----------------//
+console.log("More On Events");
+
+// 1. Attach onfocus and onblur events to the SSNField below using only
+//    JavaScript, i.e., do not modify the HTML. Change the background of the
+//    text input field on these events.
+
+window.onload = function() {
+  var textField = document.getElementById("SSNField");
+  function focusColor() {
+    textField.style.background = "aquamarine";
+  }
+  function blurColor() {
+    textField.style.background = "lavenderblush";
+  }
+  textField.onfocus = focusColor;
+  textField.onblur = blurColor;
+};
+
+
+
+</script>
+</head>
+<body>
+  See console!<br><br>
+  <input type="text" id="SSNField">
+  <input type="button" value="Check" onclick="validateSSN();">
+  <br><br>
+  <div id="statusDiv">
+    Please enter an SSN and press Check!
+  </div>
+</body>
+</html>
